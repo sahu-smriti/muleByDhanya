@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4d9361d7-1060-48bb-ad6c-2f5ac14afd22" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="helloWorldFlow" doc:id="1ecc970f-b601-4467-a688-71118a7f311d" >
+		<http:listener doc:name="Listener" doc:id="1e0c96a1-34f0-44ba-b74b-b5c34d45dcaa" config-ref="HTTP_Listener_config" path="/hello"/>
+		<logger level="INFO" doc:name="Logger" doc:id="bdf78de8-88e4-4cd7-b287-512341bba6ea" message='#["hello world"]'/>
+		<flow-ref doc:name="Flow Reference" doc:id="444acc4c-8d0c-49a5-9260-6c10044345bc" name="helloWorldSub_Flow"/>
+	</flow>
+	<!-- [STUDIO:"helloWorldFlow1"]<flow name="helloWorldFlow1" doc:id="8a931c01-7ce0-4aa4-b4e5-7cd6ffb233da" >
+		<http:listener doc:name="Listener" doc:id="d7c9acac-63c8-4094-94c5-cf2226e7219f" config-ref="HTTP_Listener_config" path="/one"/>
+	</flow> [STUDIO] -->
+	<!-- [STUDIO:"helloWorldFlow2"]<flow name="helloWorldFlow2" doc:id="fe3515ec-7aa6-4d15-b41c-6c680e714bea" >
+	</flow> [STUDIO] -->
+	<sub-flow name="helloWorldSub_Flow" doc:id="05797175-5520-42de-b98d-0056cd3ff47c" >
+		<logger level="INFO" doc:name="Logger" doc:id="7abdb2c5-3d17-40cf-a44b-452c80e8d020" message='#["this is sub flow"]'/>
+	</sub-flow>
+</mule>

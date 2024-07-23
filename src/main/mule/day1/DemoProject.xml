@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="DemoProjectFlow" doc:id="da54f69a-270b-4909-a4b4-930f0d42edea" >
+		<http:listener doc:name="Listener" doc:id="a768c312-1c33-47ca-8e72-85313ca05cb7" path="/demo" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="startLogger" doc:id="b6245c52-74b6-46cf-82cc-aecb5c0528f2" message='#["1 logger started demo class"]'/>
+		<flow-ref doc:name="demoSubFlow1" doc:id="2cbe2e6e-5601-4389-a5f6-88d8ad5aaf31" name="DemoSub_Flow1"/>
+		<logger level="INFO" doc:name="endLogger" doc:id="45ed24f6-2d82-4910-bce3-81828d487835" message='#["5 End of the program"]'/>
+	</flow>
+	<sub-flow name="DemoSub_Flow1" doc:id="c3084432-1a35-4ff6-9698-99faf396412d" >
+		<logger level="INFO" doc:name="Logger" doc:id="44fbb03c-a14f-4ade-8235-017e26f0d820" message='#["demo sub flow api 2"]'/>
+		<flow-ref doc:name="Flow Reference" doc:id="09ff6b3d-b286-4dc2-84ca-c0bd69c0b1fc" name="privateFlow"/>
+	</sub-flow>
+	<flow name="privateFlow" doc:id="0843e598-dacb-49b7-8a11-7a2dc95ee4b6" >
+		<logger level="INFO" doc:name="demoApi" doc:id="2b5e8933-0e9a-47e1-ad20-1aeaa24467cf" message='#["3 demo private api"]'/>
+		<flow-ref doc:name="Flow Reference" doc:id="951b4bc3-59b9-462d-99bc-9cb58b36e964" name="subFlow2"/>
+	</flow>
+	<sub-flow name="subFlow2" doc:id="c92eeb29-36dc-499d-8820-ee717e37187f" >
+		<logger level="INFO" doc:name="Logger" doc:id="6349a10d-c932-44ae-9cb9-e84b1228555a" message='#["4 sub flow 2"]'/>
+	</sub-flow>
+</mule>
