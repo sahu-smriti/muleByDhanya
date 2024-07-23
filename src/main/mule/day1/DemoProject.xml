@@ -9,6 +9,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<logger level="INFO" doc:name="startLogger" doc:id="b6245c52-74b6-46cf-82cc-aecb5c0528f2" message='#["1 logger started demo class"]'/>
 		<flow-ref doc:name="demoSubFlow1" doc:id="2cbe2e6e-5601-4389-a5f6-88d8ad5aaf31" name="DemoSub_Flow1"/>
 		<logger level="INFO" doc:name="endLogger" doc:id="45ed24f6-2d82-4910-bce3-81828d487835" message='#["5 End of the program"]'/>
+		<logger level="INFO" doc:name="Logger" doc:id="9a3dc3ba-1b4a-4815-b382-13154a2debd5" message='#["finished logger work"]'/>
 	</flow>
 	<sub-flow name="DemoSub_Flow1" doc:id="c3084432-1a35-4ff6-9698-99faf396412d" >
 		<logger level="INFO" doc:name="Logger" doc:id="44fbb03c-a14f-4ade-8235-017e26f0d820" message='#["demo sub flow api 2"]'/>
